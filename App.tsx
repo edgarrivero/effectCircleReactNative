@@ -7,7 +7,7 @@
 import React, {useState} from 'react';
 // import type {PropsWithChildren} from 'react';
 import {
-  SafeAreaView,
+  SafeAreaView, Alert, Button,
   ScrollView,
   StatusBar,
   StyleSheet,
@@ -38,6 +38,42 @@ import Animated, {
   runOnJS, withTiming, clamp } from 'react-native-reanimated';
 import Background from './src/components/Background';
 import Circle from './src/components/Circle';
+
+import {useAuth0, Auth0Provider} from 'react-native-auth0';
+
+const Home = () => {
+  const {authorize, clearSession, user, getCredentials, error, isLoading} = useAuth0();
+
+  const onLogin = async () => {
+    await authorize({}, {});
+    const credentials = await getCredentials();
+    Alert.alert('AccessToken: ' + credentials?.accessToken);
+  };
+
+  const loggedIn = user !== undefined && user !== null;
+
+  const onLogout = async () => {
+    await clearSession({}, {});
+  };
+
+
+  if (isLoading) {
+    return <View style={styles.container}><Text>Loading</Text></View>;
+  }
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.header}> Auth0Sample - Login </Text>
+      {user && <Text>You are logged in as {user.name}</Text>}
+      {!user && <Text>You are not logged in</Text>}
+      <Button
+        onPress={loggedIn ? onLogout : onLogin}
+        title={loggedIn ? 'Log Out' : 'Log In'}
+      />
+      {error && <Text style={styles.error}>{error.message}</Text>}
+    </View>
+  );
+};
 
 
 function App(): React.JSX.Element {
@@ -105,33 +141,37 @@ function App(): React.JSX.Element {
     });
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <View style={styles.container}>
-        <Circle data={data} screenWidth={SCREEN_WIDTH} x={x} />
-        <Background data={data} screenWidth={SCREEN_WIDTH} x={x} />
-        <GestureDetector gesture={panGesture}>
-          <Animated.View 
-            style={[
-              styles.listContainer, 
-              {
-                width: data.length * SCREEN_WIDTH,
-              },
-              translateXStyle,
-            ]}>
-            {data.map((item,index) => {
-              return <RenderItem item={item} index={index} key={index} x={x} />;
-            })}
-          </Animated.View>
-        </GestureDetector>
-        
-      </View>
-      <ButtonCus
-          data={data}
-          x={x}
-          screenWidth={SCREEN_WIDTH}
-          currentIndex={currentIndex}
-        />
-    </GestureHandlerRootView>
+    <Auth0Provider domain={"spacenglish.us.auth0.com"} clientId={"a2AO52J20GTePXEgBuE1dqTdThPnGzcO"}>
+      {/* <GestureHandlerRootView style={{ flex: 1 }}>
+        <View style={styles.container}>
+          <Circle data={data} screenWidth={SCREEN_WIDTH} x={x} />
+          <Background data={data} screenWidth={SCREEN_WIDTH} x={x} />
+          <GestureDetector gesture={panGesture}>
+            <Animated.View 
+              style={[
+                styles.listContainer, 
+                {
+                  width: data.length * SCREEN_WIDTH,
+                },
+                translateXStyle,
+              ]}>
+              {data.map((item,index) => {
+                return <RenderItem item={item} index={index} key={index} x={x} />;
+              })}
+            </Animated.View>
+          </GestureDetector>
+          
+        </View>
+        <ButtonCus
+            data={data}
+            x={x}
+            screenWidth={SCREEN_WIDTH}
+            currentIndex={currentIndex}
+          />
+      </GestureHandlerRootView> */}
+      <Home />
+    </Auth0Provider>
+    
   );
 }
 const styles = StyleSheet.create({
@@ -142,6 +182,16 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     zIndex: 9999999,
+  },
+  header: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  error: {
+    margin: 20,
+    textAlign: 'center',
+    color: '#D8000C'
   }
 });
 export default App;

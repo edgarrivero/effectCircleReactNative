@@ -13,7 +13,7 @@ const data: OnboardingData[] = [
   {
     id: 1,
     animation: require('../assets/animations/Animation4.json'),
-    text: 'Enamorate del ingles',
+    text: 'Descubre el universo del inglés',
     textColor: '#ffffff',
     backgroundColor: '#510bb1',
     animationBg: '#ffffff',
@@ -21,7 +21,7 @@ const data: OnboardingData[] = [
   {
     id: 2,
     animation: require('../assets//animations/Animation5.json'),
-    text: 'Brilla con Nosotros',
+    text: 'Viaja más allá de las estrellas',
     textColor: '#000000',
     backgroundColor: '#ffda22',
     animationBg: '#ffffff',
@@ -29,17 +29,9 @@ const data: OnboardingData[] = [
   {
     id: 3,
     animation: require('../assets//animations/Animation6.json'),
-    text: 'Lorem Ipsum dolor sit amet',
+    text: 'Empecemos',
     textColor: '#ffffff',
     backgroundColor: '#6c00ff',
-    animationBg: '#ffffff',
-  },
-  {
-    id: 4,
-    animation: require('../assets/animations/Animation4.json'),
-    text: 'Enamorate del ingles2',
-    textColor: '#ffffff',
-    backgroundColor: '#510bb1',
     animationBg: '#ffffff',
   }
 ];

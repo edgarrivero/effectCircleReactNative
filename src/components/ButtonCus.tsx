@@ -40,17 +40,20 @@ const ButtonCus = ({data, screenWidth, x,currentIndex }: Props) => {
     };
   });
 
+  const isLastScreen = currentIndex >= data.length - 1;
+
   return (
     <AnimatedPressable  
       style={[styles.button, animatedOpacityButton]} 
       onPress={() => {
         if (Math.abs(x.value) % screenWidth === 0) {
-          const clampValue = clamp(
-            Math.abs(x.value) + screenWidth,
-            0,
-            2 * screenWidth,
-          );
-          x.value = withTiming(-clampValue, {duration: 1000 } )
+          if (!isLastScreen) {
+            const clampValue = clamp(Math.abs(x.value) + screenWidth, 0, 2 * screenWidth);
+            x.value = withTiming(-clampValue, { duration: 1000 });
+          } else {
+            // Aquí puedes manejar lo que sucede después de pasar las tres pantallas
+            console.log('Ya pasaste las tres pantallas');
+          }
         }
       }}>
       <Arrow
