@@ -64,7 +64,7 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.header}> Auth0Sample - Login </Text>
-      {user && <Text>You are logged in as {user.name}</Text>}
+      {user && <Text>You are logged in as edgar edgar {user.name}</Text>}
       {!user && <Text>You are not logged in</Text>}
       <Button
         onPress={loggedIn ? onLogout : onLogin}
