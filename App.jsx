@@ -205,10 +205,27 @@
 // In App.js in a new project
 
 import * as React from 'react';
-import { Button, View, Text, StyleSheet } from 'react-native';
+import { Button, View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {useAuth0, Auth0Provider} from 'react-native-auth0';
+
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withRepeat,
+  FadeIn,
+  FadeInDown,
+  FadeOutDown,
+  FadeOut,
+  BounceIn,
+  BounceOut,
+  Easing,
+  withTiming,
+  withSequence,
+} from 'react-native-reanimated';
+
+import LottieView from 'lottie-react-native';
 
 function HomeScreen({ navigation }) {
    const {authorize, clearSession, user, getCredentials, error, isLoading} = useAuth0();
@@ -232,20 +249,45 @@ function HomeScreen({ navigation }) {
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-        <Text style={styles.header}> Auth0Sample - Login </Text>
-        {user && <Text>You are logged in as edgar edgar {user.name}</Text>}
-        {!user && <Text>You are not logged in</Text>}
-        <Button
-          onPress={loggedIn ? onLogout : onLogin}
-          title={loggedIn ? 'Log Out' : 'Log In'}
-        />
-        {error && <Text style={styles.error}>{error.message}</Text>}
-        {/* <Button
-          title="Go to Details"
-          onPress={() => navigation.navigate('Details')}
-        /> */}
+        <View style={styles.container}>
+          <ImageBackground  source={require('./src/assets/images/background.jpg')} style={[styles.container]}>
+            <Animated.Image entering={BounceIn.duration(1000)} source={require('./src/assets/images/logo.png')} style={[styles.logo]} />
+            <Animated.Image entering={FadeIn.duration(2000)} source={require('./src/assets/images/planetas.png')} style={[styles.planetas]} />
+            {/* <Animated.Image entering={BounceIn.duration(3000)} source={require('./assets/astronauta.png')} style={[styles.astronauta]} />  */}
+            <View style={styles.astronauta}>
+              <LottieView
+                autoPlay
+                style={{
+                  width: 500,
+                  height: 500,
+                }}
+                // Find more Lottie files at https://lottiefiles.com/featured
+                source={require('./src/assets/jsons/animation_astronauta.json')}
+              />
+            </View>
+            <Animated.View entering={FadeIn.duration(2000)} style={styles.containerBtn}>
+              <TouchableOpacity onPress={loggedIn ? onLogout : onLogin} style={styles.button}>
+                <Text style={styles.buttonText}>{loggedIn ? 'Log Out' : 'Log In'}</Text>
+              </TouchableOpacity>
+            </Animated.View>
+          </ImageBackground>
+        </View>
     </View>
+    // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    //   <Text>Home Screen</Text>
+    //     <Text style={styles.header}> Auth0Sample - Login </Text>
+    //     {user && <Text>You are logged in as edgar edgar {user.name}</Text>}
+    //     {!user && <Text>You are not logged in</Text>}
+    //     <Button
+    //       onPress={loggedIn ? onLogout : onLogin}
+    //       title={loggedIn ? 'Log Out' : 'Log In'}
+    //     />
+    //     {error && <Text style={styles.error}>{error.message}</Text>}
+    //     {/* <Button
+    //       title="Go to Details"
+    //       onPress={() => navigation.navigate('Details')}
+    //     /> */}
+    // </View>
   );
 }
 
@@ -269,7 +311,11 @@ function App() {
   return (
     <Auth0Provider domain={"spacenglish.us.auth0.com"} clientId={"a2AO52J20GTePXEgBuE1dqTdThPnGzcO"}>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={({ route }) => ({
+            headerShown: false,
+          })}
+        >
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Details" component={DetailsScreen} />
         </Stack.Navigator>
@@ -283,6 +329,9 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: 'center',
+    height: '100%',
+    width: '100%'
   },
   listContainer: {
     flex: 1,
@@ -298,5 +347,48 @@ const styles = StyleSheet.create({
     margin: 20,
     textAlign: 'center',
     color: '#D8000C'
-  }
+  },
+  logo: {
+    maxWidth: 300,
+    resizeMode: 'contain', // Esto asegura que la imagen se ajuste sin recortar
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    marginTop: 30,
+    zIndex: 30,
+  },
+  planetas: {
+   position: 'absolute',
+   top: -10,
+   zIndex: 0,
+   maxWidth: 350,
+   resizeMode: 'contain',
+ },
+  astronauta: {
+   position: 'absolute',
+   top: 150,
+   left: -50,
+   zIndex: 10,
+   maxWidth: 350,
+   resizeMode: 'contain', // Esto asegura que la imagen se ajuste sin recortar
+   marginBottom: 200
+ },
+  containerBtn: {
+    justifyContent: 'flex-end',
+  },
+  button: {
+    backgroundColor: '#fbae17',
+    paddingVertical: 10,
+    paddingHorizontal: 80,
+    borderRadius: 50,
+    marginTop: 370,
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+    elevation: 5
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 32,
+    fontWeight: 'bold',
+
+  },
 });
