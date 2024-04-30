@@ -210,6 +210,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {useAuth0, Auth0Provider} from 'react-native-auth0';
 
+import LoginScreen from './src/screens/LoginScreen';
+import HomeScreen from './src/screens/HomeScreen';
+
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -227,83 +230,9 @@ import Animated, {
 
 import LottieView from 'lottie-react-native';
 
-function HomeScreen({ navigation }) {
-   const {authorize, clearSession, user, getCredentials, error, isLoading} = useAuth0();
 
-   const onLogin = async () => {
-     await authorize({}, {});
-     const credentials = await getCredentials();
-     //Alert.alert('AccessToken: ' + credentials?.accessToken);
-     // Navega a la pantalla LoggedInScreen después del inicio de sesión
-     navigation.navigate('Details');
-   };
 
-   const loggedIn = user !== undefined && user !== null;
-   const onLogout = async () => {
-     await clearSession({}, {});
-   };
 
-   if (isLoading) {
-     return <View style={styles.container}><Text>Loading</Text></View>;
-   }
-
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <View style={styles.container}>
-          <ImageBackground  source={require('./src/assets/images/background.jpg')} style={[styles.container]}>
-            <Animated.Image entering={BounceIn.duration(1000)} source={require('./src/assets/images/logo.png')} style={[styles.logo]} />
-            <Animated.Image entering={FadeIn.duration(2000)} source={require('./src/assets/images/planetas.png')} style={[styles.planetas]} />
-            {/* <Animated.Image entering={BounceIn.duration(3000)} source={require('./assets/astronauta.png')} style={[styles.astronauta]} />  */}
-            <View style={styles.astronauta}>
-              <LottieView
-                autoPlay
-                style={{
-                  width: 500,
-                  height: 500,
-                }}
-                // Find more Lottie files at https://lottiefiles.com/featured
-                source={require('./src/assets/jsons/animation_astronauta.json')}
-              />
-            </View>
-            <Animated.View entering={FadeIn.duration(2000)} style={styles.containerBtn}>
-              <TouchableOpacity onPress={loggedIn ? onLogout : onLogin} style={styles.button}>
-                <Text style={styles.buttonText}>{loggedIn ? 'Log Out' : 'Log In'}</Text>
-              </TouchableOpacity>
-            </Animated.View>
-          </ImageBackground>
-        </View>
-    </View>
-    // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    //   <Text>Home Screen</Text>
-    //     <Text style={styles.header}> Auth0Sample - Login </Text>
-    //     {user && <Text>You are logged in as edgar edgar {user.name}</Text>}
-    //     {!user && <Text>You are not logged in</Text>}
-    //     <Button
-    //       onPress={loggedIn ? onLogout : onLogin}
-    //       title={loggedIn ? 'Log Out' : 'Log In'}
-    //     />
-    //     {error && <Text style={styles.error}>{error.message}</Text>}
-    //     {/* <Button
-    //       title="Go to Details"
-    //       onPress={() => navigation.navigate('Details')}
-    //     /> */}
-    // </View>
-  );
-}
-
-function DetailsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
-      <Button
-        title="Go to Details... again"
-        onPress={() => navigation.push('Details')}
-      />
-      <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-    </View>
-  );
-}
 
 const Stack = createNativeStackNavigator();
 
@@ -316,8 +245,8 @@ function App() {
             headerShown: false,
           })}
         >
+          <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Details" component={DetailsScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Auth0Provider>
@@ -331,7 +260,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     height: '100%',
-    width: '100%'
+    width: '100%',
+    backgroundColor: '#000228'
   },
   listContainer: {
     flex: 1,

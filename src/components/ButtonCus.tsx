@@ -53,6 +53,7 @@ const ButtonCus = ({data, screenWidth, x,currentIndex }: Props) => {
           } else {
             // Aquí puedes manejar lo que sucede después de pasar las tres pantallas
             console.log('Ya pasaste las tres pantallas');
+            //navigation.goBack();
           }
         }
       }}>

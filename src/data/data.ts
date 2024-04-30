@@ -12,7 +12,7 @@ export interface OnboardingData {
 const data: OnboardingData[] = [
   {
     id: 1,
-    animation: require('../assets/animations/Animation4.json'),
+    animation: require('../assets/animations/Animation1.json'),
     text: 'Descubre el universo del inglés',
     textColor: '#ffffff',
     backgroundColor: '#510bb1',
@@ -20,7 +20,7 @@ const data: OnboardingData[] = [
   },
   {
     id: 2,
-    animation: require('../assets//animations/Animation5.json'),
+    animation: require('../assets/animations/Animation2.json'),
     text: 'Viaja más allá de las estrellas',
     textColor: '#000000',
     backgroundColor: '#ffda22',
@@ -28,7 +28,7 @@ const data: OnboardingData[] = [
   },
   {
     id: 3,
-    animation: require('../assets//animations/Animation6.json'),
+    animation: require('../assets/animations/Animation4.json'),
     text: 'Empecemos',
     textColor: '#ffffff',
     backgroundColor: '#6c00ff',
