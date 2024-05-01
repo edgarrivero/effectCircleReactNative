@@ -35,13 +35,29 @@ function LoginScreen({ navigation }) {
     };
  
     const loggedIn = user !== undefined && user !== null;
-    const onLogout = async () => {
-      await clearSession({}, {});
-    };
- 
+     const onLogout = async () => {
+       await clearSession({}, {});
+     };
+
     if (isLoading) {
       return <View style={styles.container}><Text>Loading</Text></View>;
     }
+
+    useEffect(() => {
+      const delay = 1000; 
+  
+      const timeoutId = setTimeout(async () => {
+        const credentials = await getCredentials();
+        navigation.navigate('Home', { credentials: credentials?.accessToken, user: user?.name });
+        // Código que se ejecuta después de un tiempo prudente
+        console.log(user);
+        console.log('El componente se ha montado y ha pasado un tiempo prudente');
+      }, delay);
+  
+      return () => {
+        clearTimeout(timeoutId); 
+      };
+    }, []); 
  
    return (
      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
