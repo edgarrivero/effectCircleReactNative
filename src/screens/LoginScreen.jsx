@@ -48,9 +48,15 @@ function LoginScreen({ navigation }) {
   
       const timeoutId = setTimeout(async () => {
         const credentials = await getCredentials();
-        navigation.navigate('Home', { credentials: credentials?.accessToken, user: user?.name });
+        if(loggedIn){
+          //console.log(user);
+          navigation.navigate('Home', { credentials: credentials?.accessToken, user: user?.name, picture: user?.picture });
+        }else{
+          console.log("no ha iniciado sesion")
+        }
+        
         // Código que se ejecuta después de un tiempo prudente
-        console.log(user);
+        
         console.log('El componente se ha montado y ha pasado un tiempo prudente');
       }, delay);
   

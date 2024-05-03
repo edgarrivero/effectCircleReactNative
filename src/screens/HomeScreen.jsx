@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { View, Text, Button, StyleSheet, useWindowDimensions } from 'react-native';
+import { View, Text, Button, StyleSheet, useWindowDimensions, Image } from 'react-native';
 
 import {
   Gesture,
@@ -20,7 +20,21 @@ import Background from '../components/Background';
 
 const HomeScreen = ({ navigation, route }) => {
 
-  const { credentials, user } = route.params;
+  const { credentials, user, picture } = route.params;
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerTitle: user,
+      headerRight: () => (
+        <View style={styles.headerRightContainer}>
+          <Image
+            style={styles.profileImage}
+            source={{ uri: picture }} // Utilizar la URL de la imagen del perfil del usuario
+          />
+        </View>
+      ),
+    });
+  }, []);
 
    const {width: SCREEN_WIDTH} = useWindowDimensions();
    const x = useSharedValue(0);
@@ -147,5 +161,14 @@ const styles = StyleSheet.create({
      margin: 20,
      textAlign: 'center',
      color: '#D8000C'
-  }
+  },
+  headerRightContainer: {
+    marginRight: 15,
+  },
+  profileImage: {
+    width: 40,
+    height: 40,
+    borderRadius: 25,
+    backgroundColor: 'yellow'
+  },
 });

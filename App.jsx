@@ -205,120 +205,43 @@
 // In App.js in a new project
 
 import * as React from 'react';
-import { Button, View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { Image } from 'react-native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {useAuth0, Auth0Provider} from 'react-native-auth0';
+
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import LoginScreen from './src/screens/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
 
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withRepeat,
-  FadeIn,
-  FadeInDown,
-  FadeOutDown,
-  FadeOut,
-  BounceIn,
-  BounceOut,
-  Easing,
-  withTiming,
-  withSequence,
-} from 'react-native-reanimated';
-
-import LottieView from 'lottie-react-native';
-
-
-
-
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 function App() {
+  
+  const { isAuthenticated, user } = useAuth0();
+
   return (
     <Auth0Provider domain={"spacenglish.us.auth0.com"} clientId={"a2AO52J20GTePXEgBuE1dqTdThPnGzcO"}>
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={({ route }) => ({
-            headerShown: false,
-          })}
-        >
-          <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="Home" component={HomeScreen} />
+     <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+          <Stack.Screen 
+            name="Home" 
+            component={HomeScreen} 
+            options={{ 
+              headerStyle: {
+                backgroundColor: '#000229',
+              },
+              headerTintColor: '#fff',
+            }}
+          />
         </Stack.Navigator>
-      </NavigationContainer>
+      </NavigationContainer> 
     </Auth0Provider>
   );
 }
 
 export default App;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    height: '100%',
-    width: '100%',
-    backgroundColor: '#000228'
-  },
-  listContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    zIndex: 9999999,
-  },
-  header: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  error: {
-    margin: 20,
-    textAlign: 'center',
-    color: '#D8000C'
-  },
-  logo: {
-    maxWidth: 300,
-    resizeMode: 'contain', // Esto asegura que la imagen se ajuste sin recortar
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    marginTop: 30,
-    zIndex: 30,
-  },
-  planetas: {
-   position: 'absolute',
-   top: -10,
-   zIndex: 0,
-   maxWidth: 350,
-   resizeMode: 'contain',
- },
-  astronauta: {
-   position: 'absolute',
-   top: 150,
-   left: -50,
-   zIndex: 10,
-   maxWidth: 350,
-   resizeMode: 'contain', // Esto asegura que la imagen se ajuste sin recortar
-   marginBottom: 200
- },
-  containerBtn: {
-    justifyContent: 'flex-end',
-  },
-  button: {
-    backgroundColor: '#fbae17',
-    paddingVertical: 10,
-    paddingHorizontal: 80,
-    borderRadius: 50,
-    marginTop: 370,
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-    elevation: 5
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 32,
-    fontWeight: 'bold',
-
-  },
-});
