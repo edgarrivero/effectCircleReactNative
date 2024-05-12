@@ -3,7 +3,7 @@
  import { useNavigation, useRoute } from '@react-navigation/native';
  import { SettingsSvg } from '../assets/data/svgs';
 import House from '../assets/icon/house.svg';
-import HouseSvg from '../components/Iconos/HouseSvg';
+import { HomeSolid, HomeLine } from '../components/Iconos/HouseSvg';
 
  const TabItem = ({ screenName, iconActive, iconInactive, label, onPress, isActive }) => (
   <TouchableOpacity
@@ -60,15 +60,15 @@ import HouseSvg from '../components/Iconos/HouseSvg';
                 />  */}
 
                 <TouchableOpacity onPress={() => handleImagePress('Home')} style={styles.label} >
-                  <HouseSvg fill="none" stroke='white' strokeWidth={1} />
+                  <HomeSolid fill="white" stroke='white' strokeWidth={0} />
                   <Text style={styles.btnlabel}>Home</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => handleImagePress('Home')} style={styles.label} >
-                  
+                  <HomeLine fill="white" stroke='white' strokeWidth={0} />
                   <Text style={styles.btnlabel}>Particles</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => handleImagePress('Home')} style={styles.label} >
-                  
+                  <HomeSolid fill="white" stroke='white' strokeWidth={0} />
                   <Text style={styles.btnlabel}>Books</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => handleImagePress('Home')} style={styles.label} >
@@ -87,7 +87,8 @@ import HouseSvg from '../components/Iconos/HouseSvg';
    },
    label:{
     alignItems: 'center',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    padding: 15
    },
    tabs: {
     width: Dimensions.get('window').width - 60,
