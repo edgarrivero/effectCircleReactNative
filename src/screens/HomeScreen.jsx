@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { View, Text, Button, StyleSheet, useWindowDimensions, Image } from 'react-native';
+import { View, Text, Button, StyleSheet, useWindowDimensions, Image, ImageBackground, SafeAreaView } from 'react-native';
 
 import {
   Gesture,
@@ -18,6 +18,10 @@ import Animated, {
 import Circle from '../components/Circle';
 import Background from '../components/Background';
 
+import CustomImageCarousal from '../components/CustomImageCarousal';
+import Tabs from '../components/tabs';
+import PlanetList from '../components/planets';
+
 const HomeScreen = ({ navigation, route }) => {
 
   const { credentials, user, picture } = route.params;
@@ -29,7 +33,7 @@ const HomeScreen = ({ navigation, route }) => {
         <View style={styles.headerRightContainer}>
           <Image
             style={styles.profileImage}
-            source={{ uri: picture }} // Utilizar la URL de la imagen del perfil del usuario
+            source={{ uri: picture }} 
           />
         </View>
       ),
@@ -92,47 +96,88 @@ const HomeScreen = ({ navigation, route }) => {
        }
      });
 
-  return (
-    //  <GestureHandlerRootView style={{ flex: 1 }}>
-    //      <View style={styles.container}>
-    //        <Circle data={data} screenWidth={SCREEN_WIDTH} x={x} />
-    //        <Background data={data} screenWidth={SCREEN_WIDTH} x={x} />
-    //        <GestureDetector gesture={panGesture}>
-    //          <Animated.View 
-    //            style={[
-    //              styles.listContainer, 
-    //              {
-    //                width: data.length * SCREEN_WIDTH,
-    //              },
-    //              translateXStyle,
-    //            ]}>
-    //            {data.map((item,index) => {
-    //              return <RenderItem item={item} index={index} key={index} x={x} />;
-    //            })}
-    //          </Animated.View>
-    //        </GestureDetector>
-        
-    //      </View>
-    //      <ButtonCus
-    //          data={data}
-    //          x={x}
-    //          screenWidth={SCREEN_WIDTH}
-    //          currentIndex={currentIndex}
-    //          navigation={navigation}
-    //        />
-    //    </GestureHandlerRootView>
 
-    <View style={styles.container}>
-      <Text style={styles.header}>Welcome!</Text>
+     const data = [
+      {
+        image: require('../assets/images/planetas.png'),
+      },
+      {
+        image: require('../assets/images/bg.png'),
+      },
+      {
+        image: require('../assets/images/logo.png'),
+      },
+      {
+        image: require('../assets/images/planetas.png'),
+      },
+    ];
+
+  return (
+      // <GestureHandlerRootView style={{ flex: 1 }}>
+      //     <View style={styles.container}>
+      //       <Circle data={data} screenWidth={SCREEN_WIDTH} x={x} />
+      //       <Background data={data} screenWidth={SCREEN_WIDTH} x={x} />
+      //       <GestureDetector gesture={panGesture}>
+      //         <Animated.View 
+      //           style={[
+      //             styles.listContainer, 
+      //             {
+      //               width: data.length * SCREEN_WIDTH,
+      //             },
+      //             translateXStyle,
+      //           ]}>
+      //           {data.map((item,index) => {
+      //             return <RenderItem item={item} index={index} key={index} x={x} />;
+      //           })}
+      //         </Animated.View>
+      //       </GestureDetector>
       
-      <Text style={styles.header}>AccessToken: {credentials}</Text>
-      <Text style={styles.header}>Test: {user}</Text>
-      <Text style={styles.header}>You are now logged in.</Text>
+      //     </View>
+      //     <ButtonCus
+      //         data={data}
+      //         x={x}
+      //         screenWidth={SCREEN_WIDTH}
+      //         currentIndex={currentIndex}
+      //         navigation={navigation}
+      //       />
+      //   </GestureHandlerRootView>
+
+    // <View style={styles.container}>
+
+    //   <Text style={styles.header}>Welcome!</Text>
+      
+    //   {/* <Text style={styles.header}>AccessToken: {credentials}</Text> */}
+    //   <Text style={styles.header}>{user}</Text>
+    
+    //   {/* <SafeAreaView style={styles.container}>
+    //     <View style={styles.carouselContainer}>
+    //       <Text style={styles.text}>Image Carousel Square</Text>
+    //       <CustomImageCarousal data={data} autoPlay={true} pagination={true} />
+    //     </View>
+    //   </SafeAreaView> */}
+
+      
+    //   <Tabs></Tabs>
+    //   {/* <Button
+    //     title="Go Back"
+    //     onPress={() => navigation.goBack()} 
+    //   /> */}
+    // </View>
+
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={styles.container}>
+      
+      <ImageBackground  source={require('../assets/images/background.jpg')} style={[styles.container]}>
+          <PlanetList navigation={navigation}></PlanetList>
+      </ImageBackground>
+      <Tabs picture={picture}></Tabs>
       {/* <Button
-        title="Go Back"
-        onPress={() => navigation.goBack()} 
+        title="Go to Level1"
+        onPress={() => navigation.navigate('Level1')}
       /> */}
+      </View>
     </View>
+
   );
 };
 
@@ -144,7 +189,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: '100%',
     width: '100%',
-    backgroundColor: '#000228'
+    backgroundColor: "#08012C"
   },
   listContainer: {
     flex: 1,
@@ -169,6 +214,6 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 25,
-    backgroundColor: 'yellow'
+    backgroundColor: 'gray'
   },
 });

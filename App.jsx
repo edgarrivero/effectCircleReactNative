@@ -214,6 +214,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import LoginScreen from './src/screens/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
+import SettingsScreen from './src/screens/SettingsScreen';
+import SparklesScreen from './src/screens/SparklesScreen';
+import BooksScreen from './src/screens/BooksScreen';
+import Level1Screen from './src/screens/Level1';
 
 
 const Stack = createNativeStackNavigator();
@@ -228,16 +232,11 @@ function App() {
      <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
-          <Stack.Screen 
-            name="Home" 
-            component={HomeScreen} 
-            options={{ 
-              headerStyle: {
-                backgroundColor: '#000229',
-              },
-              headerTintColor: '#fff',
-            }}
-          />
+          <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="Sparkles" component={SparklesScreen} options={{ headerShown: false }}  />
+          <Stack.Screen name="Books" component={BooksScreen} options={{ headerShown: false }}  />
+          <Stack.Screen name="Settings" component={SettingsScreen} options={{ headerShown: false }}  />
+          <Stack.Screen name="Level1" component={Level1Screen} options={{ headerShown: false }}  />
         </Stack.Navigator>
       </NavigationContainer> 
     </Auth0Provider>
