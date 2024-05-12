@@ -167,7 +167,7 @@ const HomeScreen = ({ navigation, route }) => {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <View style={styles.container}>
       
-      <ImageBackground  source={require('../assets/images/background.jpg')} style={[styles.container]}>
+      <ImageBackground blurRadius={10} source={require('../assets/images/background.jpg')} style={[styles.container]}>
           <PlanetList navigation={navigation}></PlanetList>
       </ImageBackground>
       <Tabs picture={picture}></Tabs>

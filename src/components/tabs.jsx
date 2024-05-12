@@ -2,7 +2,8 @@
  import { View, StyleSheet, Text,Dimensions,Image, TouchableOpacity  } from 'react-native';
  import { useNavigation, useRoute } from '@react-navigation/native';
  import { SettingsSvg } from '../assets/data/svgs';
-
+import House from '../assets/icon/house.svg';
+import HouseSvg from '../components/Iconos/HouseSvg';
 
  const TabItem = ({ screenName, iconActive, iconInactive, label, onPress, isActive }) => (
   <TouchableOpacity
@@ -59,7 +60,7 @@
                 />  */}
 
                 <TouchableOpacity onPress={() => handleImagePress('Home')} style={styles.label} >
-                  
+                  <HouseSvg fill="none" stroke='white' strokeWidth={1} />
                   <Text style={styles.btnlabel}>Home</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => handleImagePress('Home')} style={styles.label} >
@@ -91,7 +92,7 @@
    tabs: {
     width: Dimensions.get('window').width - 60,
     height: 80,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 35,
    },
    tabs2: {
@@ -104,7 +105,7 @@
      margin: 5, 
      flexDirection: 'row',
      overflow: 'hidden',
-     backgroundColor: 'rgba(255, 255, 255, 0.2)',
+     backgroundColor: 'rgba(255, 255, 255, 0.1)',
    },
    image: {
      width: 40,
