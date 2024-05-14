@@ -17,7 +17,7 @@ import { HomeSolid, HomeLine } from '../components/Iconos/HouseSvg';
 
  const Tabs = (props) => {
    const windowHeight = Dimensions.get('window').height;
-   const bottomViewHeight = 120; 
+   const bottomViewHeight = 90; 
    const navigation = useNavigation();
    const route = useRoute();
 
@@ -29,6 +29,7 @@ import { HomeSolid, HomeLine } from '../components/Iconos/HouseSvg';
    return (
        <View style={[styles.bottomView, { top: windowHeight - bottomViewHeight }]}>
          {/* Contenido del elemento View en la parte inferior */}
+         
          <View style={styles.tabs}>
              <View
                 style={styles.tabs2}
@@ -60,15 +61,15 @@ import { HomeSolid, HomeLine } from '../components/Iconos/HouseSvg';
                 />  */}
 
                 <TouchableOpacity onPress={() => handleImagePress('Home')} style={styles.label} >
-                  <HomeSolid fill="white" stroke='white' strokeWidth={0} />
+                  <HomeSolid fill="white" stroke='white' strokeWidth={0} width={28} height={28} />
                   <Text style={styles.btnlabel}>Home</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => handleImagePress('Home')} style={styles.label} >
-                  <HomeLine fill="white" stroke='white' strokeWidth={0} />
+                  <HomeLine fill="white" stroke='white' strokeWidth={0} width={28} height={28} />
                   <Text style={styles.btnlabel}>Particles</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => handleImagePress('Home')} style={styles.label} >
-                  <HomeSolid fill="white" stroke='white' strokeWidth={0} />
+                  <HomeSolid fill="white" stroke='white' strokeWidth={0} width={28} height={28} />
                   <Text style={styles.btnlabel}>Books</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => handleImagePress('Home')} style={styles.label} >
@@ -92,7 +93,7 @@ import { HomeSolid, HomeLine } from '../components/Iconos/HouseSvg';
    },
    tabs: {
     width: Dimensions.get('window').width - 60,
-    height: 80,
+    height: 60,
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 35,
    },
@@ -101,7 +102,7 @@ import { HomeSolid, HomeLine } from '../components/Iconos/HouseSvg';
      justifyContent: 'center',
      alignItems: 'center',
      width: Dimensions.get('window').width - 70,
-     height: 70,
+     height: 50,
      borderRadius: 30,
      margin: 5, 
      flexDirection: 'row',
@@ -109,8 +110,8 @@ import { HomeSolid, HomeLine } from '../components/Iconos/HouseSvg';
      backgroundColor: 'rgba(255, 255, 255, 0.1)',
    },
    image: {
-     width: 40,
-     height: 40,
+     width: 28,
+     height: 28,
      justifyContent: 'center',
      alignItems: 'center',
      marginHorizontal: 17
@@ -123,8 +124,8 @@ import { HomeSolid, HomeLine } from '../components/Iconos/HouseSvg';
     fontSize: 12
    },
    profileImage: {
-    width: 40,
-    height: 40,
+    width: 32,
+    height: 32,
     borderRadius: 25,
     backgroundColor: 'gray'
   },

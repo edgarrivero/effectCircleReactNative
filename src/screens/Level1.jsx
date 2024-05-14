@@ -43,7 +43,7 @@ function Level1Screen({navigation}) {
                     </View>
                     <Animated.Image entering={BounceIn.duration(1000)} source={require('../assets/images/soil.png')} style={[styles.soil]} />
                     <View style={styles.question}>
-                        <Text style={{ marginTop: 50 }}>edgar y aqui que fue</Text>
+                        <Text style={{ marginTop: 45 }}>edgar y aqui que fue</Text>
                         <TouchableOpacity onPress={moveLeft} style={styles.button}>
                             <Text style={styles.buttonText}>Comprobar</Text>
                         </TouchableOpacity>
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 10,
         borderRadius: 50,
-        marginVertical: 30,
+        marginVertical: 90,
         shadowOpacity: 0.5,
         shadowRadius: 10,
         elevation: 5,

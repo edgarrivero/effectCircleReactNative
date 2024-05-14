@@ -55,11 +55,20 @@ const styles = StyleSheet.create({
     
   },
   text: {
-    // Estilos de texto
     justifyContent: 'center',
     alignItems: 'center',
     color: 'white'
   },
+  shadowBtn: {
+    shadowColor: "white",
+    shadowOffset: {
+      width: 6,
+      height: 6,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 4,
+    elevation: 16, // Android
+  }
 })
 
 
