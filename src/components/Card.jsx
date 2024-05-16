@@ -93,7 +93,10 @@ const Card = ({
                     },
                     animatedStyle,
                   ]}>
-                    <Animated.Image
+
+                    <TouchableOpacity
+                      onPress={() => console.log('Botón presionado')}>
+                        <Animated.Image
                           source={item.image}
                           style={[
                             styles.image,
@@ -103,14 +106,9 @@ const Card = ({
                             },
                           ]}
                         />
-
-                        <TouchableOpacity
-                          style={styles.button}
-                          onPress={() => console.log('Botón presionado')}>
-                            <Text>Iniciar</Text>
-                        </TouchableOpacity>
+                    </TouchableOpacity>  
                 </Animated.View>
-                  
+                
               {/* <Animated.Image
                 source={item.image}
                 style={[
@@ -146,14 +144,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     borderRadius: 20,
-  },
-  button: {
-    position: 'absolute',
-    bottom: 20,
-    right: 20,
-    backgroundColor: '#fff',
-    padding: 10,
-    borderRadius: 10,
   },
   // image: {
   //   position: 'absolute',
