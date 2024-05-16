@@ -27,14 +27,11 @@ import { HomeSolid, HomeLine } from '../components/Iconos/HouseSvg';
    };
 
    return (
-       <View style={[styles.bottomView, { top: windowHeight - bottomViewHeight }]}>
+      <View style={[styles.bottomView, { top: windowHeight - bottomViewHeight }]}>
          {/* Contenido del elemento View en la parte inferior */}
          
          <View style={styles.tabs}>
-             <View
-                style={styles.tabs2}
-                intensity={10}
-              >
+             
                 {/* <TabItem
                   screenName="Sparkles"
                   iconActive={require('../assets/icons/home-solid.png')}
@@ -58,7 +55,7 @@ import { HomeSolid, HomeLine } from '../components/Iconos/HouseSvg';
                   label="Settings"
                   onPress={handleImagePress}
                   isActive={route.name === 'Settings'}
-                />  */}
+                />   */}
 
                 <TouchableOpacity onPress={() => handleImagePress('Home')} style={styles.label} >
                   <HomeSolid fill="white" stroke='white' strokeWidth={0} width={28} height={28} />
@@ -76,9 +73,8 @@ import { HomeSolid, HomeLine } from '../components/Iconos/HouseSvg';
                   <Image source={{ uri: props.picture }} style={styles.profileImage} />
                   <Text style={styles.btnlabel}>Settings</Text>
                 </TouchableOpacity> 
-              </View>
-         </View>
-       </View>
+            </View>
+        </View>
    );
  };
  const styles = StyleSheet.create({
@@ -87,15 +83,24 @@ import { HomeSolid, HomeLine } from '../components/Iconos/HouseSvg';
      left: 30
    },
    label:{
-    alignItems: 'center',
-    alignSelf: 'center',
-    padding: 15
+    padding: 18,
+    alignContent: 'center',
+    alignItems: 'center'
    },
    tabs: {
     width: Dimensions.get('window').width - 60,
     height: 60,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    borderRadius: 35,
+    backgroundColor: 'rgba(255, 255, 255, 0.07)',
+    borderRadius: 15,
+    alignContent: '',
+     justifyContent: 'center',
+     alignItems: 'center',
+     width: Dimensions.get('window').width - 70,
+     height: 65,
+     borderRadius: 30,
+     margin: 5, 
+     flexDirection: 'row',
+     overflow: 'hidden',
    },
    tabs2: {
      alignContent: '',

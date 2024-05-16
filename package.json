@@ -10,10 +10,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "@expo/vector-icons": "^14.0.2",
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
     "@react-navigation/stack": "^6.3.29",
+    "@shopify/react-native-skia": "^1.2.3",
     "lottie-react-native": "^6.7.2",
     "react": "18.2.0",
     "react-native": "0.73.7",
