@@ -19,7 +19,7 @@ const Card = ({
   animatedValue,
   currentIndex,
   prevIndex,
-  onPress,
+
 }) => {
   const IMAGE_WIDTH = 300;
   const IMAGE_HEIGHT = 450;
@@ -61,6 +61,8 @@ const Card = ({
     };
   });
 
+  
+
   return (
     <FlingGestureHandler
         key="up"
@@ -94,8 +96,7 @@ const Card = ({
                     animatedStyle,
                   ]}>
 
-                    <TouchableOpacity
-                      onPress={() => console.log('Botón presionado')}>
+                    
                         <Animated.Image
                           source={item.image}
                           style={[
@@ -106,8 +107,8 @@ const Card = ({
                             },
                           ]}
                         />
-                    </TouchableOpacity>  
-                </Animated.View>
+                    
+                </Animated.View> 
                 
               {/* <Animated.Image
                 source={item.image}
@@ -120,7 +121,7 @@ const Card = ({
                   },
                   animatedStyle,
                 ]}
-              /> */}
+              />  */}
               
         </FlingGestureHandler>
     </FlingGestureHandler>

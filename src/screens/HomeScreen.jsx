@@ -19,7 +19,7 @@
 // import Background from '../components/Background';
 
 // import CustomImageCarousal from '../components/CustomImageCarousal';
-// import PlanetList from '../components/planets';
+ import PlanetList from '../components/planets';
 
 // import CardContainer from '../components/CardContainer';
 
@@ -148,7 +148,7 @@ import Tabs from '../components/tabs';
 
 const HomeScreen = ({ navigation, route }) => {
 
-  const { credentials, user, picture } = route.params;
+  const { user, picture } = route.params;
 
   
 
@@ -225,27 +225,35 @@ const HomeScreen = ({ navigation, route }) => {
     // ];
     const data = [
       {
+        test: 1,
         image: require('../assets/image-product-1.jpg'),
       },
       {
+        test: 2,
         image: require('../assets/image-product-2.jpg'),
       },
       {
+        test: 3,
         image: require('../assets/image-product-3.jpg'),
       },
       {
+        test: 4,
         image: require('../assets/image-product-4.jpg'),
       },
       {
+        test: 5,
         image: require('../assets/image-product-1.jpg'),
       },
       {
+        test: 6,
         image: require('../assets/image-product-2.jpg'),
       },
       {
+        test: 7,
         image: require('../assets/image-product-3.jpg'),
       },
       {
+        test: 8,
         image: require('../assets/image-product-4.jpg'),
       },
     ];
@@ -367,32 +375,28 @@ const HomeScreen = ({ navigation, route }) => {
     //   /> */}
     // </View>
 
-    // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    //   <View style={styles.container}>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={styles.container}>
 
-    //   {/*<ImageBackground blurRadius={5} source={require('../assets/images/background.jpg')} style={[styles.container]}>
-
-    //       <PlanetList navigation={navigation}></PlanetList>
-    //   </ImageBackground>*/}
-
-
-
-    //   <Tabs picture={picture}></Tabs>
-    //   {/* <Button
-    //     title="Go to Level1"
-    //     onPress={() => navigation.navigate('Level1')}
-    //   /> */}
-    //   </View>
-    // </View>
-    <GestureHandlerRootView style={{flex: 2}}>
       <ImageBackground blurRadius={1} source={require('../assets/images/backgroundBlur1.jpg')} style={[styles.container]}>
-        <SafeAreaView style={styles.container}>
-          <CardContainer data={data} maxVisibleItems={3} />
-        </SafeAreaView>
-        {/* <PlanetList style={styles.box2} navigation={navigation}></PlanetList>   */}
-        <Tabs picture={picture}></Tabs>
+          <PlanetList navigation={navigation}></PlanetList>
       </ImageBackground>
-    </GestureHandlerRootView>
+      <Tabs picture={picture}></Tabs>
+      {/* <Button
+        title="Go to Level1"
+        onPress={() => navigation.navigate('Level1')}
+      /> */}
+      </View>
+    </View>
+    // <GestureHandlerRootView style={{flex: 2}}>
+    //   <ImageBackground blurRadius={1} source={require('../assets/images/backgroundBlur1.jpg')} style={[styles.container]}>
+    //     <SafeAreaView style={styles.container}>
+    //       <CardContainer data={data} maxVisibleItems={3} />
+    //     </SafeAreaView>
+    //     {/* <PlanetList style={styles.box2} navigation={navigation}></PlanetList>   */}
+    //     <Tabs picture={picture}></Tabs>
+    //   </ImageBackground>
+    // </GestureHandlerRootView>
     
   );
 };
@@ -402,7 +406,8 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    width: '100%',
+    backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -429,7 +434,7 @@ const styles = StyleSheet.create({
   // },
   // overflowContainer: {
   //   height: OVERFLOW_HEIGHT,
-  //   overflow: 'hidden',
+  //   overflow: 'hidden',                           
   // },
 });
 

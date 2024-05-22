@@ -8,9 +8,9 @@ const PlanetList = ({ navigation }) => {
 
   return (
     <View>
-      <Text>Planetas</Text>
       <FlatList
       data={planetas}
+      contentContainerStyle={{padding: 20}}
       style={styles.container}
       renderItem={({ item: planeta }) => (
         
@@ -23,9 +23,8 @@ const PlanetList = ({ navigation }) => {
               />
             </TouchableOpacity>
             <Text style={styles.text}>{planeta.nombre}</Text>
-          </View>      
-        
-        
+          </View>    
+
       )}
       keyExtractor={(item, index) => index.toString()}
     />
@@ -41,7 +40,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 40,
-    width: '100%'
   },
   planetaContainer: {
     width: Dimensions.get('window').width - 80,
@@ -52,11 +50,8 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     width: 100,
     height: 100,
-    
   },
   text: {
-    justifyContent: 'center',
-    alignItems: 'center',
     color: 'white'
   },
   shadowBtn: {

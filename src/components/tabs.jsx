@@ -3,14 +3,14 @@
  import { useNavigation, useRoute } from '@react-navigation/native';
  import { SettingsSvg } from '../assets/data/svgs';
 import House from '../assets/icon/house.svg';
-import { HomeSolid, HomeLine } from '../components/Iconos/HouseSvg';
+import { HomeLine, ChartLine, SettingLine, GameLine } from '../components/Iconos/HouseSvg';
 
- const TabItem = ({ screenName, iconActive, iconInactive, label, onPress, isActive }) => (
+const TabItem = ({ screenName, IconComponent, label, onPress, isActive }) => (
   <TouchableOpacity
     style={[styles.label, isActive && styles.activeTab]}
     onPress={() => onPress(screenName)}
   >
-    <Image source={isActive ? iconActive : iconInactive} style={styles.image} />
+    <IconComponent stroke={isActive ? "#FEBC00" : "#858585"} />
     <Text style={[styles.btnlabel, isActive && styles.activeTabText]}>{label}</Text>
   </TouchableOpacity>
 );
@@ -29,52 +29,55 @@ import { HomeSolid, HomeLine } from '../components/Iconos/HouseSvg';
    return (
       <View style={[styles.bottomView, { top: windowHeight - bottomViewHeight }]}>
          {/* Contenido del elemento View en la parte inferior */}
-         
-         <View style={styles.tabs}>
-             
-                {/* <TabItem
-                  screenName="Sparkles"
-                  iconActive={require('../assets/icons/home-solid.png')}
-                  iconInactive={require('../assets/icons/home-line.png')}
-                  label="Sparkles"
-                  onPress={handleImagePress}
-                  isActive={route.name === 'Sparkles'}
-                />
-                <TabItem
-                  screenName="Books"
-                  iconActive={require('../assets/icons/books-solid.png')}
-                  iconInactive={require('../assets/icons/books-line.png')}
-                  label="Books"
-                  onPress={handleImagePress}
-                  isActive={route.name === 'Books'}
-                />
-                <TabItem
-                  screenName="Settings"
-                  iconActive={{ uri: props.picture }}
-                  iconInactive={{ uri: props.picture }}
-                  label="Settings"
-                  onPress={handleImagePress}
-                  isActive={route.name === 'Settings'}
-                />   */}
+          <View style={styles.tabs}>
+            <TabItem
+              screenName="Home"
+              IconComponent={HomeLine}
+              label="Inicio"
+              onPress={handleImagePress}
+              isActive={route.name === 'Home'}
+            />
+            <TabItem
+              screenName="Books"
+              IconComponent={GameLine}
+              label="Juegos"
+              onPress={handleImagePress}
+              isActive={route.name === 'Books'}
+            />
+            <TabItem
+              screenName="Sparkles"
+              IconComponent={ChartLine}
+              label="Avance"
+              onPress={handleImagePress}
+              isActive={route.name === 'Sparkles'}
+            />
+            <TabItem
+              screenName="Settings"
+              IconComponent={SettingLine}
+              label="Ajustes"
+              onPress={handleImagePress}
+              isActive={route.name === 'Settings'}
+            />
+          </View>
 
-                <TouchableOpacity onPress={() => handleImagePress('Home')} style={styles.label} >
-                  <HomeSolid fill="white" stroke='white' strokeWidth={0} width={28} height={28} />
-                  <Text style={styles.btnlabel}>Home</Text>
+                {/* <TouchableOpacity onPress={() => handleImagePress('Home')} style={styles.label} >
+                  <HomeLine fill="#FEBC00" stroke='#FEBC00' strokeWidth={0} width={24} height={24} />
+                  <Text style={styles.btnlabel}>Inicio</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleImagePress('Home')} style={styles.label} >
-                  <HomeLine fill="white" stroke='white' strokeWidth={0} width={28} height={28} />
-                  <Text style={styles.btnlabel}>Particles</Text>
+                <TouchableOpacity onPress={() => handleImagePress('Books')} style={styles.label} >
+                  <GameLine fill="#858585" stroke='#858585' strokeWidth={0} width={24} height={24} />
+                  <Text style={styles.btnlabel}>Juegos</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleImagePress('Home')} style={styles.label} >
-                  <HomeSolid fill="white" stroke='white' strokeWidth={0} width={28} height={28} />
-                  <Text style={styles.btnlabel}>Books</Text>
+                <TouchableOpacity onPress={() => handleImagePress('Sparkles')} style={styles.label} >
+                  <ChartLine fill="#858585" stroke='#858585' strokeWidth={1} width={24} height={24} />
+                  <Text style={styles.btnlabel}>Avance</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleImagePress('Home')} style={styles.label} >
-                  <Image source={{ uri: props.picture }} style={styles.profileImage} />
-                  <Text style={styles.btnlabel}>Settings</Text>
-                </TouchableOpacity> 
-            </View>
-        </View>
+                <TouchableOpacity onPress={() => handleImagePress('Settings')} style={styles.label} >
+                  <Image source={{ uri: props.picture }} style={styles.profileImage} /> 
+                  <SettingLine fill="#858585" stroke='#858585' strokeWidth={0} width={24} height={24} />
+                  <Text style={styles.btnlabel}>Ajustes</Text>
+                </TouchableOpacity>  */}
+      </View>
    );
  };
  const styles = StyleSheet.create({
@@ -90,11 +93,11 @@ import { HomeSolid, HomeLine } from '../components/Iconos/HouseSvg';
    tabs: {
     width: Dimensions.get('window').width - 60,
     height: 60,
-    backgroundColor: 'rgba(255, 255, 255, 0.07)',
+    backgroundColor: 'rgba(41, 41, 41, 0.9)',
     borderRadius: 15,
-    alignContent: '',
+    alignContent: 'end',
      justifyContent: 'center',
-     alignItems: 'center',
+     alignItems: 'end',
      width: Dimensions.get('window').width - 70,
      height: 65,
      borderRadius: 30,
@@ -125,7 +128,7 @@ import { HomeSolid, HomeLine } from '../components/Iconos/HouseSvg';
     width: '40'
    },
    btnlabel: {
-    color: 'white',
+    color: '#E3E3E3',
     fontSize: 12
    },
    profileImage: {

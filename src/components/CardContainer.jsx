@@ -7,10 +7,6 @@ const CardContainer = ({data, maxVisibleItems}) => {
   const currentIndex = useSharedValue(0);
   const prevIndex = useSharedValue(0);
 
-  const handleCardPress = () => {
-    console.log("ajaaaa sirvio")
-  };
-
   return (
     <>
       {data.map((item, index) => {
@@ -24,7 +20,6 @@ const CardContainer = ({data, maxVisibleItems}) => {
             currentIndex={currentIndex}
             prevIndex={prevIndex}
             key={index}
-            onPressCustom={handleCardPress}
           />
         );
       })}
@@ -37,5 +32,14 @@ const CardContainer = ({data, maxVisibleItems}) => {
 export default CardContainer;
 
 const styles = StyleSheet.create({
-  
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    alignContent: 'center'
+  },
+  imageContainer: {
+    position: 'absolute'
+  },
+  image: {
+  },
 });
