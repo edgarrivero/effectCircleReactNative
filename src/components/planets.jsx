@@ -7,7 +7,7 @@ import Animated from 'react-native-reanimated';
 const PlanetList = ({ navigation }) => {
 
   return (
-    <View>
+    <View style={{flex: 2}}>
       <FlatList
       data={planetas}
       contentContainerStyle={{padding: 20}}
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 40,
+    zIndex: 5
   },
   planetaContainer: {
     width: Dimensions.get('window').width - 80,

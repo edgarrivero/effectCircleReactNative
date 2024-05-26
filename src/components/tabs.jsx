@@ -91,7 +91,6 @@ const TabItem = ({ screenName, IconComponent, label, onPress, isActive }) => (
     alignItems: 'center'
    },
    tabs: {
-    width: Dimensions.get('window').width - 60,
     height: 60,
     backgroundColor: 'rgba(41, 41, 41, 0.9)',
     borderRadius: 15,
