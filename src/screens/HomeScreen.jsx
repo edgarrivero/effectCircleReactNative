@@ -25,6 +25,7 @@ import {
 } from 'react-native';
 import CustomImageCarousalSquare from '../components/carousel/CustomImageCarousalSquare';
 import CustomImageCarousalLandscape from '../components/carousel/CustomImageCarousalLandscape';
+import { LogoCuadrado } from '../components/Iconos/HouseSvg';
 
 
 const HomeScreen = ({ navigation, route }) => {
@@ -55,7 +56,7 @@ const HomeScreen = ({ navigation, route }) => {
   });
 
 
-  const { user, picture } = route.params;
+  //const { user, picture } = route.params;
 
     // const data = [
     //   {
@@ -142,24 +143,22 @@ const HomeScreen = ({ navigation, route }) => {
         <View style={styles.container}>
           
             <View style={styles.header}>
-              <Text style={{color:'white', textAlign: 'center'}}>MERCUS</Text>
+              <Image style={styles.imageHeader}  source={require('../assets/images/logo_cuadrado.png')}  />
             </View>
               
-              <View style={{position: 'relative'}}>
+              {/* <View style={{position: 'relative'}}>
                 <View style={styles.carouselContainer}>
                   <Text style={styles.text}>Iniciales</Text>
                   <CustomImageCarousalSquare
+                    navigation={navigation}
                     data={data}
-                    autoPlay={true}
+                    autoPlay={false}
                     pagination={true}
                   />
                 </View>  
-              </View>  
+              </View>   */}
 
-              <View style={{marginTop: 480, position: 'absolute', zIndex: 2}}>
-                <Text style={{color:'white', textAlign: 'center'}}>Edgar Joseph</Text>
-                {/* <PlanetList navigation={navigation}></PlanetList>    */}
-              </View>
+                <PlanetList navigation={navigation}></PlanetList>    
 
               
                 
@@ -174,7 +173,7 @@ const HomeScreen = ({ navigation, route }) => {
                 </View> */}
               
 
-              <Tabs picture={picture}></Tabs>
+              <Tabs></Tabs>
           
               {/* <Button
                 title="Go to Level1"
@@ -197,12 +196,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   header:{
-    paddingTop: 30,
-    width: Dimensions.get('window').width - 60,
+    paddingTop: 12,
+    width: Dimensions.get('window').width,
     height: 60,
-    backgroundColor: 'rgba(41, 41, 41, 0.6)',
+    backgroundColor: 'rgba(41, 41, 41, 0.7)',
     borderRadius: 15,
-    color: 'white'
+    color: 'white',
+    alignContent: 'center',
+    alignItems: 'center'
+  },
+  imageHeader: {
+    width: 34,
+    height: 34
   },
   containerImage: {
     height: '100%'

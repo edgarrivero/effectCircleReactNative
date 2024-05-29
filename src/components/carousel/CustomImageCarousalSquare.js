@@ -1,4 +1,4 @@
-import {StyleSheet, View, Image, useWindowDimensions} from 'react-native';
+import {StyleSheet, View, Image, useWindowDimensions, TouchableOpacity} from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
 import Animated, {
   useSharedValue,
@@ -8,7 +8,7 @@ import Animated, {
   useAnimatedRef,
 } from 'react-native-reanimated';
 import Pagination from './Pagination';
-const CustomImageCarousal = ({data, autoPlay, pagination}) => {
+const CustomImageCarousal = ({navigation, data, autoPlay, pagination}) => {
   const scrollViewRef = useAnimatedRef(null);
   const interval = useRef();
   const [isAutoPlay, setIsAutoPlay] = useState(autoPlay);
@@ -44,6 +44,12 @@ const CustomImageCarousal = ({data, autoPlay, pagination}) => {
       clearInterval(interval.current);
     }
   }, [SIZE, SPACER, isAutoPlay, data.length, offSet.value, scrollViewRef]);
+
+  const handleImagePress = (index) => {
+    // Aquí puedes manejar la acción cuando se hace clic en una imagen, por ejemplo, navegar a una pantalla de detalles.
+    console.log('Clic en la imagen:', index);
+    navigation.navigate('Level1');
+  };
 
   return (
     <View>
@@ -86,9 +92,12 @@ const CustomImageCarousal = ({data, autoPlay, pagination}) => {
           }
           return (
             <View style={{width: SIZE}} key={index}>
-              <Animated.View style={[styles.imageContainer, style]}>
-                <Image source={item.image} style={styles.image} />
-              </Animated.View>
+              <TouchableOpacity onPress={() => handleImagePress(index)}>
+                <Animated.View style={[styles.imageContainer, style]}>
+                  
+                  <Image source={item.image} style={styles.image} />
+                </Animated.View>
+              </TouchableOpacity>
             </View>
           );
         })}

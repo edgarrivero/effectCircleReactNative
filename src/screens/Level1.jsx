@@ -22,7 +22,7 @@ function Level1Screen({navigation}) {
             
                 <View style={styles.sectionBack} >
                     <View style={styles.btnBack}>
-                        <TouchableOpacity onPress={() => navigation.navigate('Sparkles')}  style={styles.back} >
+                        <TouchableOpacity onPress={() => navigation.navigate('Home')}  style={styles.back} >
                             <BackSvg  style={styles.backSvg} />
                         </TouchableOpacity>
                     </View>

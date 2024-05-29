@@ -83,7 +83,8 @@ const TabItem = ({ screenName, IconComponent, label, onPress, isActive }) => (
  const styles = StyleSheet.create({
    bottomView: {
      position: 'absolute',
-     left: 30
+     left: 30,
+     zIndex: 1000
    },
    label:{
     padding: 18,
