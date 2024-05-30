@@ -30,7 +30,7 @@ function Level1Screen({navigation}) {
                     </View>
                     <View style={styles.sectionCohete}>
                         <View style={{ paddingTop: 11 }}>
-                        <Image source={require('../assets/images/lineProgress.png')} style={[styles.lineProgress]} />            
+                            <Image source={require('../assets/images/lineProgress.png')} style={[styles.lineProgress]} />            
                         </View>
                         
                         {/* <Animated.Image entering={BounceIn.duration(1000)} source={require('../assets/images/cohete.png')} style={[styles.cohete, { left: leftPosition }]} /> */}
@@ -106,13 +106,13 @@ const styles = StyleSheet.create({
         marginHorizontal: 30
     },
     header:{
-       marginTop: 20,
+       marginTop: 15,
     },
     btnBack: {
         paddingHorizontal: 20,
     },
     back:{
-        paddingTop: 10,
+        paddingTop: 12,
         paddingStart: 4,
         alignItems: 'center',
         width: 40,
