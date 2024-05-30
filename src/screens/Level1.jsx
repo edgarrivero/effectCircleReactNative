@@ -33,7 +33,7 @@ function Level1Screen({navigation}) {
 
     const dataArray = [
         {
-            instruction: "Completa el espacio en blanco",
+            instruction: "Completa el espacio en blanco0",
             question: "What's your favorite movie or book?",
             answer: "My favorite book is 'To Kill a Mockingbird'."
         },
