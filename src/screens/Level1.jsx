@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useRef, useState }  from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, Image, StyleSheet, Dimensions } from 'react-native';
 import Animated, {
   BounceIn, withTiming
@@ -11,12 +11,24 @@ import LottieView from 'lottie-react-native';
 
 function Level1Screen({navigation}) {
 
+    const coheteRef = useRef(null); // Referencia al View del cohete
     const [leftPosition, setLeftPosition] = useState(0);
     const [currentIndex, setCurrentIndex] = useState(0); // Estado para rastrear el índice actual
+    const [cohetePosition, setCohetePosition] = useState({ x: 0, y: 0 }); // Estado para la posición del cohete
 
     const moveLeft = () => {
+        if(cohetePosition.x >= 310){
+            console.log("Paso la pantalla")
+            navigation.navigate('Home');
+        }
+
         setLeftPosition(leftPosition + 10); // Cambia la posición hacia la izquierda
         setCurrentIndex((prevIndex) => (prevIndex + 1) % dataArray.length);
+
+        // Obtener la posición del cohete
+        coheteRef.current.measure((x, y, width, height, pageX, pageY) => {
+            setCohetePosition({ x: pageX, y: pageY });
+        });
     };
 
     const dataArray = [
@@ -64,7 +76,7 @@ function Level1Screen({navigation}) {
                         </View>
                         
                         {/* <Animated.Image entering={BounceIn.duration(1000)} source={require('../assets/images/cohete.png')} style={[styles.cohete, { left: leftPosition }]} /> */}
-                        <View style={[styles.cohete, { left: leftPosition }]}>
+                        <View ref={coheteRef} style={[styles.cohete, { left: leftPosition }]}>
                             <LottieView
                                 autoPlay
                                 style={{
@@ -88,6 +100,10 @@ function Level1Screen({navigation}) {
                     <Animated.Image entering={BounceIn.duration(1000)} source={require('../assets/images/soil.png')} style={[styles.soil]} />
                     <View style={styles.question}>
                         <Text style={styles.textExample}>{dataArray[currentIndex].answer}</Text>
+                        {/* Mostrar la posición del cohete */}
+                        <View style={styles.positionInfo}>
+                            <Text style={styles.positionText}>Posición del cohete: X: {cohetePosition.x}, Y: {cohetePosition.y}</Text>
+                        </View>
                         <TouchableOpacity onPress={moveLeft} style={styles.button}>
                             <Text style={styles.buttonText}>Comprobar</Text>
                         </TouchableOpacity>
@@ -193,8 +209,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#fbae17',
         paddingVertical: 10,
         paddingHorizontal: 10,
-        borderRadius: 50,
-        marginVertical: 90,
+        borderRadius: 15,
+        marginVertical: 40,
         shadowOpacity: 0.5,
         shadowRadius: 10,
         elevation: 5,
