@@ -7,6 +7,8 @@ import Animated, {
 import Svg, { Path } from 'react-native-svg';
 import { BackSvg } from '../assets/data/svgs';
 
+import LottieView from 'lottie-react-native';
+
 function Level1Screen({navigation}) {
 
     const [leftPosition, setLeftPosition] = useState(0);
@@ -31,7 +33,19 @@ function Level1Screen({navigation}) {
                         <Image source={require('../assets/images/lineProgress.png')} style={[styles.lineProgress]} />            
                         </View>
                         
-                        <Animated.Image entering={BounceIn.duration(1000)} source={require('../assets/images/cohete.png')} style={[styles.cohete, { left: leftPosition }]} />
+                        {/* <Animated.Image entering={BounceIn.duration(1000)} source={require('../assets/images/cohete.png')} style={[styles.cohete, { left: leftPosition }]} /> */}
+                        <View style={[styles.cohete, { left: leftPosition }]}>
+                            <LottieView
+                                autoPlay
+                                style={{
+                                width: 50,
+                                height: 50,
+                                }}
+                                // Find more Lottie files at https://lottiefiles.com/featured
+                                source={require('../assets/animations/RocketAnimation.json')}
+                            />
+                        </View>
+                        
                     </View>
                 </View>
                 
@@ -43,7 +57,7 @@ function Level1Screen({navigation}) {
                     </View>
                     <Animated.Image entering={BounceIn.duration(1000)} source={require('../assets/images/soil.png')} style={[styles.soil]} />
                     <View style={styles.question}>
-                        <Text style={{ marginTop: 45 }}>edgar y aqui que fue</Text>
+                        <Text style={styles.textExample}>edgar y aqui que fue</Text>
                         <TouchableOpacity onPress={moveLeft} style={styles.button}>
                             <Text style={styles.buttonText}>Comprobar</Text>
                         </TouchableOpacity>
@@ -76,7 +90,8 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
         resizeMode: 'contain',
-        zIndex: 10
+        zIndex: 10,
+        transform: [{ rotate: '90deg' }],
     },
     lineProgress: {
         width: Dimensions.get('window').width - 120,
@@ -91,7 +106,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 30
     },
     header:{
-       marginTop: 40,
+       marginTop: 20,
     },
     btnBack: {
         paddingHorizontal: 20,
@@ -102,7 +117,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: 40,
         height: 40,
-        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+        backgroundColor: 'rgba(255, 255, 255, 0.1)',
         borderRadius: 50,
         color: 'white',
     },
@@ -161,6 +176,13 @@ const styles = StyleSheet.create({
         fontSize: 32,
         fontWeight: 'bold',
     },
+    textExample: { 
+        marginTop: 45, 
+        marginLeft: 20, 
+        color: 'white', 
+        fontSize: 30
+    }
+    
 });
 
 export default Level1Screen;

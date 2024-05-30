@@ -146,7 +146,7 @@ const HomeScreen = ({ navigation, route }) => {
               <Image style={styles.imageHeader}  source={require('../assets/images/logo_cuadrado.png')}  />
             </View>
               
-              {/* <View style={{position: 'relative'}}>
+              <View style={{position: 'relative'}}>
                 <View style={styles.carouselContainer}>
                   <Text style={styles.text}>Iniciales</Text>
                   <CustomImageCarousalSquare
@@ -156,9 +156,9 @@ const HomeScreen = ({ navigation, route }) => {
                     pagination={true}
                   />
                 </View>  
-              </View>   */}
+              </View>   
 
-                <PlanetList navigation={navigation}></PlanetList>    
+                {/* <PlanetList navigation={navigation}></PlanetList>     */}
 
               
                 

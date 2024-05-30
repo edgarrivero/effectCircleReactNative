@@ -40,7 +40,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 40,
-    zIndex: 5
+    zIndex: 5,
+    paddingBottom: 80,
+    marginBottom: 70,
   },
   planetaContainer: {
     width: Dimensions.get('window').width - 80,
