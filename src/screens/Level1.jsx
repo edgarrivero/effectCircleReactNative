@@ -1,7 +1,7 @@
 import React, { useState }  from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, Image, StyleSheet, Dimensions } from 'react-native';
 import Animated, {
-  BounceIn,
+  BounceIn, withTiming
 } from 'react-native-reanimated';
 
 import Svg, { Path } from 'react-native-svg';
@@ -12,10 +12,40 @@ import LottieView from 'lottie-react-native';
 function Level1Screen({navigation}) {
 
     const [leftPosition, setLeftPosition] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(0); // Estado para rastrear el índice actual
 
     const moveLeft = () => {
         setLeftPosition(leftPosition + 10); // Cambia la posición hacia la izquierda
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % dataArray.length);
     };
+
+    const dataArray = [
+        {
+            instruction: "Completa el espacio en blanco",
+            question: "What's your favorite movie or book?",
+            answer: "My favorite book is 'To Kill a Mockingbird'."
+        },
+        {
+            instruction: "Completa el espacio en blanco2",
+            question: "What did you do last weekend?",
+            answer: "I went hiking in the mountains."
+        },
+        {
+            instruction: "Completa el espacio en blanco3",
+            question: "What's your favorite food?",
+            answer: "I love eating sushi."
+        },
+        {
+            instruction: "Completa el espacio en blanco4",
+            question: "Where do you want to travel next?",
+            answer: "I want to visit Japan next year."
+        },
+        {
+            instruction: "Completa el espacio en blanco5",
+            question: "What's your favorite hobby?",
+            answer: "I enjoy painting in my free time."
+        }
+    ];
 
   return (
     <View style={{ flex: 1 }}>
@@ -49,15 +79,15 @@ function Level1Screen({navigation}) {
                     </View>
                 </View>
                 
-                <Text style={styles.title}>Completa el espacio en blanco y si es mas largo el texto que pasa</Text>
+                <Text style={styles.title}>{dataArray[currentIndex].instruction}</Text>
                 <View>
                     <View  style={styles.headerQuestion}>
                         <Animated.Image entering={BounceIn.duration(1000)} source={require('../assets/images/level1-astronaut.png')} style={[styles.astronaut]} />
-                        <Text style={styles.subTitle}>What's your favorite movie or book? pero que es esta huevada</Text>
+                        <Text style={styles.subTitle}>{dataArray[currentIndex].question}</Text>
                     </View>
                     <Animated.Image entering={BounceIn.duration(1000)} source={require('../assets/images/soil.png')} style={[styles.soil]} />
                     <View style={styles.question}>
-                        <Text style={styles.textExample}>edgar y aqui que fue</Text>
+                        <Text style={styles.textExample}>{dataArray[currentIndex].answer}</Text>
                         <TouchableOpacity onPress={moveLeft} style={styles.button}>
                             <Text style={styles.buttonText}>Comprobar</Text>
                         </TouchableOpacity>
