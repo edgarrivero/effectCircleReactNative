@@ -139,13 +139,25 @@ const HomeScreen = ({ navigation, route }) => {
   return (
       
     <View style={{ flex: 1 }}>
-      <ImageBackground blurRadius={1} source={require('../assets/images/backgroundBlur1.jpg')} style={[styles.containerImage]}>
+      <ImageBackground blurRadius={80} source={require('../assets/images/backgroundBlur1-01.jpg')} style={[styles.containerImage]}>
         <View style={styles.container}>
           
             <View style={styles.header}>
               <Image style={styles.imageHeader}  source={require('../assets/images/logo_cuadrado.png')}  />
             </View>
-              
+              <View>
+                  <Text style={{fontSize: 40, color: 'white'}}>Categorias</Text>
+                  <Text>Categorias1</Text>
+                  <Text>Categorias2</Text>
+
+                  <Text>Categorias3</Text>
+                  <Text>Categorias4</Text>
+                  <Text>Categorias5</Text>
+                  <Text>Categorias6</Text>
+                  <Text>Categorias7</Text>
+
+              </View>
+
               <View style={{position: 'relative'}}>
                 <View style={styles.carouselContainer}>
                   <Text style={styles.text}>Iniciales</Text>
@@ -156,12 +168,11 @@ const HomeScreen = ({ navigation, route }) => {
                     pagination={true}
                   />
                 </View>  
-              </View>   
-
-                {/* <PlanetList navigation={navigation}></PlanetList>     */}
+              </View>     
 
               
-                
+
+                {/* <PlanetList navigation={navigation}></PlanetList>     */}
                 
                 {/* <View style={styles.carouselContainer}>
                   <Text style={styles.text}>Image Carousel Landscape</Text>
@@ -179,8 +190,8 @@ const HomeScreen = ({ navigation, route }) => {
                 title="Go to Level1"
                 onPress={() => navigation.navigate('Level1')}
               /> */}
-          </View>
-        </ImageBackground> 
+        </View>
+      </ImageBackground> 
       
     </View>
     
@@ -225,7 +236,8 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   text: {
-    textAlign: 'center', 
+    textAlign: 'left', 
+    paddingLeft: 80,
     color: '#ABABAB', 
     marginBottom: 10,
     fontSize: 26,

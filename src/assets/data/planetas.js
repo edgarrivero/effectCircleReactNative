@@ -9,7 +9,7 @@ export default [
     with: 150,
     height: 100,
     navigateTo: "Level1",
-    paddingLeft: 100
+    paddingLeft: 20
   },
   {
     nombre: "Venus",
@@ -21,7 +21,7 @@ export default [
     with: 70,
     height: 70,
     navigateTo: "Level2",
-    paddingLeft: 10
+    paddingLeft: 240
   },
   {
     nombre: "Earth",
@@ -29,11 +29,11 @@ export default [
     nivel: "Beginner",
     descripcion: "Earth is the third planet from the Sun and the only one known to support life.",
     alignItems: 'flex-start',
-    justifyContent: 'center',
-    with: 90,
-    height: 80,
+    justifyContent: 'start',
+    with: 100,
+    height: 50,
     navigateTo: "Level3",
-    paddingLeft: 100
+    paddingLeft: 40
   },
   {
     nombre: "Mars",
@@ -54,10 +54,10 @@ export default [
     descripcion: "Mercury is the closest planet to the Sun.",
     alignItems: 'flex-start', // Alineación horizontal
     justifyContent: 'flex-start', // Alineación vertical
-    with: 80,
+    with: 180,
     height: 100,
     navigateTo: "Level5",
-    paddingLeft: 40
+    paddingLeft: 30
   },
   {
     nombre: "Venus",
@@ -69,7 +69,7 @@ export default [
     with: 180,
     height: 90,
     navigateTo: "Level6",
-    paddingLeft: 30
+    paddingLeft: 130
   },
   {
     nombre: "Mercury",
@@ -81,19 +81,19 @@ export default [
     with: 150,
     height: 100,
     navigateTo: "Level1",
-    paddingLeft: 80
+    paddingLeft: 20
   },
   {
     nombre: "Venus",
     imagen: "https://raw.githubusercontent.com/edgarrivero/assets/main/planet8-01.png",
     nivel: "Beginner",
     descripcion: "Venus is known for its thick atmosphere.",
-    alignItems: 'flex-end',
+    alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    with: 70,
+    with: 130,
     height: 70,
     navigateTo: "Level2",
-    paddingLeft: 90
+    paddingLeft: 170
   },
   {
     nombre: "Earth",
@@ -101,11 +101,11 @@ export default [
     nivel: "Beginner",
     descripcion: "Earth is the third planet from the Sun and the only one known to support life.",
     alignItems: 'flex-start',
-    justifyContent: 'center',
-    with: 50,
+    justifyContent: 'start',
+    with: 150,
     height: 80,
     navigateTo: "Level3",
-    paddingLeft: 120
+    paddingLeft: 20
   },
   {
     nombre: "Mars",
@@ -126,10 +126,10 @@ export default [
     descripcion: "Mercury is the closest planet to the Sun.",
     alignItems: 'flex-start', // Alineación horizontal
     justifyContent: 'flex-start', // Alineación vertical
-    with: 80,
-    height: 100,
+    with: 180,
+    height: 150,
     navigateTo: "Level5",
-    paddingLeft: 160
+    paddingLeft: 0
   },
   {
     nombre: "Venus",
@@ -141,7 +141,7 @@ export default [
     with: 180,
     height: 90,
     navigateTo: "Level6",
-    paddingLeft: 180
+    paddingLeft: 80
   },
   
 ]

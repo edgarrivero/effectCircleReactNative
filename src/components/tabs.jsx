@@ -93,7 +93,7 @@ const TabItem = ({ screenName, IconComponent, label, onPress, isActive }) => (
    },
    tabs: {
     height: 60,
-    backgroundColor: 'rgba(41, 41, 41, 0.9)',
+    backgroundColor: 'rgba(41, 41, 41, 0.5)',
     borderRadius: 15,
     alignContent: 'end',
      justifyContent: 'center',
@@ -115,7 +115,7 @@ const TabItem = ({ screenName, IconComponent, label, onPress, isActive }) => (
      margin: 5, 
      flexDirection: 'row',
      overflow: 'hidden',
-     backgroundColor: 'rgba(255, 255, 255, 0.1)',
+     backgroundColor: 'rgba(255, 255, 255, 0.5)',
    },
    image: {
      width: 28,

@@ -42,7 +42,7 @@ function SparklesScreen({ navigation }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <View style={styles.container}>
       
-      <ImageBackground  source={require('../assets/images/background.jpg')} style={[styles.container]}>
+      <ImageBackground blurRadius={20}  source={{uri: 'https://raw.githubusercontent.com/edgarrivero/assets/main/space.png'}} style={[styles.container]}>
           <PlanetList navigation={navigation}></PlanetList>
       </ImageBackground>
       <Tabs></Tabs>

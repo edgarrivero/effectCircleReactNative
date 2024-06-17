@@ -46,7 +46,6 @@ const CustomImageCarousal = ({navigation, data, autoPlay, pagination}) => {
   }, [SIZE, SPACER, isAutoPlay, data.length, offSet.value, scrollViewRef]);
 
   const handleImagePress = (index) => {
-    // Aquí puedes manejar la acción cuando se hace clic en una imagen, por ejemplo, navegar a una pantalla de detalles.
     console.log('Clic en la imagen:', index);
     navigation.navigate('Level1');
   };
@@ -82,8 +81,18 @@ const CustomImageCarousal = ({navigation, data, autoPlay, pagination}) => {
               [(index - 2) * SIZE, (index - 1) * SIZE, index * SIZE],
               [0.5, 1, 0.5],
             );
+            const rotation = interpolate(
+              x.value,
+              [(index - 2) * SIZE, (index - 1) * SIZE, index * SIZE],
+              [15, 0, -15] // Giro en grados, -15 para la izquierda, 0 para el centro, 15 para la derecha
+            );
+            const translateY = interpolate(
+              x.value,
+              [(index - 2) * SIZE, (index - 1) * SIZE, index * SIZE],
+              [10, 0, 10] // Ajusta estos valores según la cantidad de desplazamiento que desees
+            );
             return {
-              transform: [{scale}],
+              transform: [{scale}, { rotate: `${rotation}deg` }, { translateY }],
               opacity,
             };
           });
@@ -116,7 +125,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: undefined,
+    height: 400,
     aspectRatio: 1,
   },
 });

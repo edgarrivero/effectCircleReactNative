@@ -14,7 +14,12 @@ const PlanetList = ({ navigation }) => {
       style={styles.container}
       renderItem={({ item: planeta }) => (
         
-          <View style={[styles.planetaContainer, { alignItems: planeta.alignItems, justifyContent: planeta.justifyContent, height: planeta.height }]}>
+          <View style={[styles.planetaContainer, { 
+                        alignItems: 'center', 
+                        justifyContent: planeta.justifyContent, 
+                        height: planeta.height, 
+                        paddingLeft: planeta.paddingLeft 
+                      }]}>
             <TouchableOpacity onPress={() => navigation.navigate(planeta.navigateTo)}>
               <Image
                 source={{ uri: planeta.imagen }}
@@ -22,7 +27,10 @@ const PlanetList = ({ navigation }) => {
                 accessibilityLabel={planeta.nombre}
               />
             </TouchableOpacity>
-            <Text style={styles.text}>{planeta.nombre}</Text>
+            <View>
+              <Text style={styles.text}>{planeta.nombre}</Text>
+            </View>
+            
           </View>    
 
       )}
@@ -43,11 +51,12 @@ const styles = StyleSheet.create({
     zIndex: 5,
     paddingBottom: 80,
     marginBottom: 70,
-  },
+    },
   planetaContainer: {
-    width: Dimensions.get('window').width - 80,
-    height: 150,
-    padding: 10,
+      width: Dimensions.get('window').width - 80,
+      flexDirection: 'row',
+      padding: 10,
+      marginBottom: 60
   },
   planetaImagen: {
     resizeMode: 'contain',
@@ -55,10 +64,13 @@ const styles = StyleSheet.create({
     height: 100,
   },
   text: {
-    color: 'white'
+    color: '#B6B6B6',
+    fontSize: 18,
+    fontWeight: 'bold',
+    paddingLeft: 10
   },
   shadowBtn: {
-    shadowColor: "white",
+    shadowColor: "#B6B6B6",
     shadowOffset: {
       width: 6,
       height: 6,

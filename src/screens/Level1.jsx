@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     },
     question: {
         backgroundColor: '#754c29',
-        height: Dimensions.get('window').height - 330,
+        height: Dimensions.get('window').height - 300,
         position: 'relative'
     },
     astronaut: {
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fbae17',
         paddingVertical: 10,
         paddingHorizontal: 10,
-        borderRadius: 15,
+        borderRadius: 20,
         marginVertical: 40,
         shadowOpacity: 0.5,
         shadowRadius: 10,
