@@ -1,5 +1,12 @@
 import React, { useRef, useState }  from 'react';
-import { View, Text, TouchableOpacity, ImageBackground, Image, StyleSheet, Dimensions } from 'react-native';
+import { 
+    View, 
+    Text, 
+    TouchableOpacity, 
+    ImageBackground, 
+    Image, 
+    StyleSheet, 
+    Dimensions, TextInput, SafeAreaView } from 'react-native';
 import Animated, {
   BounceIn, withTiming
 } from 'react-native-reanimated';
@@ -10,6 +17,8 @@ import { BackSvg } from '../assets/data/svgs';
 import LottieView from 'lottie-react-native';
 
 function Level1Screen({navigation}) {
+
+    const [text, onChangeText] = React.useState('');
 
     const coheteRef = useRef(null); // Referencia al View del cohete
     const [leftPosition, setLeftPosition] = useState(0);
@@ -61,7 +70,7 @@ function Level1Screen({navigation}) {
 
   return (
     <View style={{ flex: 1 }}>
-        <ImageBackground  source={require('../assets/images/fondo-questions.jpg')} style={[styles.container]}>
+        <ImageBackground blurRadius={30}  source={{uri: 'https://raw.githubusercontent.com/edgarrivero/assets/main/space.png'}} style={[styles.container]}>
             <View style={styles.header}>
             
                 <View style={styles.sectionBack} >
@@ -99,8 +108,13 @@ function Level1Screen({navigation}) {
                     </View>
                     <Animated.Image entering={BounceIn.duration(1000)} source={require('../assets/images/soil.png')} style={[styles.soil]} />
                     <View style={styles.question}>
+                        <TextInput
+                            style={styles.input}
+                            onChangeText={onChangeText}
+                            placeholder="Escribe tu respuesta"
+                            value={text}
+                        />
                         <Text style={styles.textExample}>{dataArray[currentIndex].answer}</Text>
-                        {/* Mostrar la posición del cohete */}
                         <View style={styles.positionInfo}>
                             <Text style={styles.positionText}>Posición del cohete: X: {cohetePosition.x}, Y: {cohetePosition.y}</Text>
                         </View>
@@ -227,7 +241,15 @@ const styles = StyleSheet.create({
         marginLeft: 20, 
         color: 'white', 
         fontSize: 30
-    }
+    },
+    input: {
+        height: 40,
+        marginTop: 102,
+        marginHorizontal: 20,
+        borderWidth: 1,
+        borderColor: "white",
+        padding: 10,
+    },
     
 });
 

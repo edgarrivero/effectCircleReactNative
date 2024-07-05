@@ -145,7 +145,9 @@ const HomeScreen = ({ navigation, route }) => {
           
             <View style={styles.header}>
               <Image style={styles.imageHeader}  source={require('../assets/images/logo_cuadrado.png')}  />
-              <Image style={styles.imageHeader}  source={require('../assets/images/logo_cuadrado.png')}  />
+              <Text  style={styles.textHi}>
+                Hi {user}
+              </Text>
                 <Image
                   style={styles.profileImage}
                   source={{ uri: picture }}
@@ -153,16 +155,10 @@ const HomeScreen = ({ navigation, route }) => {
 
             </View>
               <View>
-                  <Text style={{fontSize: 40, color: 'white'}}>Categorias</Text>
-                  <Text style={{fontSize: 40, color: 'white'}}>{user}</Text>
+                  <Text style={{fontSize: 35, color: '#D1D1D1', padding: 20}}>Categorias</Text>
                   <Text>Categorias2</Text>
 
                   <Text>Categorias3</Text>
-                  <Text>Categorias4</Text>
-                  <Text>Categorias5</Text>
-                  <Text>Categorias6</Text>
-                  <Text>Categorias7</Text>
-
               </View>
 
               <View style={{position: 'relative'}}>
@@ -215,11 +211,10 @@ const styles = StyleSheet.create({
   },
   header:{
     flexDirection: 'row',
-    paddingTop: 12,
-    paddingHorizontal: 25,
+    paddingHorizontal: 45,
     width: Dimensions.get('window').width,
-    height: 60,
-    backgroundColor: 'rgba(41, 41, 41, 0.7)',
+    height: 70,
+    backgroundColor: 'rgba(41, 41, 41, 0.3)',
     borderRadius: 15,
     color: 'white',
     alignContent: 'center',
@@ -268,4 +263,9 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     backgroundColor: 'black'
   },
+  textHi: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: '#D1D1D1'
+  }
 });
