@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
-  export function HomeLine({ fill = "white", strokeWidth = 1, stroke = "white", width = 24, height = 24 }) {
+  export function HomeLine({ fill = "white", strokeWidth = 1, stroke = "white", width = 32, height = 32 }) {
     return (
       <View>
         <Svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24" width={width} height={height}>
@@ -17,7 +17,7 @@ import Svg, { Path } from 'react-native-svg';
     );
   }
 
-  export function ChartLine({ fill = "white", strokeWidth = 1, stroke = "white", width = 24, height = 24 }) {
+  export function ChartLine({ fill = "white", strokeWidth = 1, stroke = "white", width = 32, height = 32 }) {
     return (
       <View>
         <Svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24" width={width} height={height}>
@@ -38,7 +38,7 @@ import Svg, { Path } from 'react-native-svg';
     );
   }
 
-  export function GameLine({ fill = "white", strokeWidth = 1, stroke = "white", width = 24, height = 24 }) {
+  export function GameLine({ fill = "white", strokeWidth = 1, stroke = "white", width = 32, height = 32 }) {
     return (
       <View>
         <Svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24" width={width} height={height}>
@@ -53,7 +53,7 @@ import Svg, { Path } from 'react-native-svg';
     );
   }
 
-  export function SettingLine({ fill = "white", strokeWidth = 1, stroke = "white", width = 24, height = 24 }) {
+  export function SettingLine({ fill = "white", strokeWidth = 1, stroke = "white", width = 32, height = 32 }) {
     return (
       <View>
         <Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={width} height={height}>

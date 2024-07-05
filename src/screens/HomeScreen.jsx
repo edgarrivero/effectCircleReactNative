@@ -30,6 +30,7 @@ import { LogoCuadrado } from '../components/Iconos/HouseSvg';
 
 const HomeScreen = ({ navigation, route }) => {
 
+  const { credentials, user, picture } = route.params;
 
   const [newData, setNewData] = useState([...data, ...data]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -55,7 +56,7 @@ const HomeScreen = ({ navigation, route }) => {
     };
   });
 
-
+  
   //const { user, picture } = route.params;
 
     // const data = [
@@ -93,19 +94,19 @@ const HomeScreen = ({ navigation, route }) => {
     //   },
     // ];
 
-  // useEffect(() => {
-  //   navigation.setOptions({
-  //     headerTitle: user,
-  //     headerRight: () => (
-  //       <View style={styles.headerRightContainer}>
-  //         <Image
-  //           style={styles.profileImage}
-  //           source={{ uri: picture }}
-  //         />
-  //       </View>
-  //     ),
-  //   });
-  // }, []);
+  //  useEffect(() => {
+  //    navigation.setOptions({
+  //      headerTitle: user,
+  //      headerRight: () => (
+  //        <View style={styles.headerRightContainer}>
+  //          <Image
+  //            style={styles.profileImage}
+  //            source={{ uri: picture }}
+  //          />
+  //        </View>
+  //      ),
+  //    });
+  //  }, []);
 
   const data = [
     {
@@ -139,15 +140,21 @@ const HomeScreen = ({ navigation, route }) => {
   return (
       
     <View style={{ flex: 1 }}>
-      <ImageBackground blurRadius={80} source={require('../assets/images/backgroundBlur1-01.jpg')} style={[styles.containerImage]}>
+      <ImageBackground blurRadius={80} source={{uri: 'https://raw.githubusercontent.com/edgarrivero/assets/main/space.png'}} style={[styles.containerImage]}>
         <View style={styles.container}>
           
             <View style={styles.header}>
               <Image style={styles.imageHeader}  source={require('../assets/images/logo_cuadrado.png')}  />
+              <Image style={styles.imageHeader}  source={require('../assets/images/logo_cuadrado.png')}  />
+                <Image
+                  style={styles.profileImage}
+                  source={{ uri: picture }}
+                />
+
             </View>
               <View>
                   <Text style={{fontSize: 40, color: 'white'}}>Categorias</Text>
-                  <Text>Categorias1</Text>
+                  <Text style={{fontSize: 40, color: 'white'}}>{user}</Text>
                   <Text>Categorias2</Text>
 
                   <Text>Categorias3</Text>
@@ -207,14 +214,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   header:{
+    flexDirection: 'row',
     paddingTop: 12,
+    paddingHorizontal: 25,
     width: Dimensions.get('window').width,
     height: 60,
     backgroundColor: 'rgba(41, 41, 41, 0.7)',
     borderRadius: 15,
     color: 'white',
     alignContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
   imageHeader: {
     width: 34,
@@ -248,5 +258,14 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginBottom: 20,
     zIndex: 1
+  },
+  headerRightContainer: {
+    marginRight: 15,
+  },
+  profileImage: {
+    width: 40,
+    height: 40,
+    borderRadius: 25,
+    backgroundColor: 'black'
   },
 });

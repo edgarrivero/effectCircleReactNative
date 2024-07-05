@@ -17,7 +17,7 @@ const TabItem = ({ screenName, IconComponent, label, onPress, isActive }) => (
 
  const Tabs = (props) => {
    const windowHeight = Dimensions.get('window').height;
-   const bottomViewHeight = 90; 
+   const bottomViewHeight = 100; 
    const navigation = useNavigation();
    const route = useRoute();
 
@@ -87,19 +87,19 @@ const TabItem = ({ screenName, IconComponent, label, onPress, isActive }) => (
      zIndex: 1000
    },
    label:{
-    padding: 18,
+    padding: 25,
     alignContent: 'center',
     alignItems: 'center'
    },
    tabs: {
-    height: 60,
+    height: 80,
     backgroundColor: 'rgba(41, 41, 41, 0.5)',
     borderRadius: 15,
     alignContent: 'end',
      justifyContent: 'center',
      alignItems: 'end',
      width: Dimensions.get('window').width - 70,
-     height: 65,
+     height: 95,
      borderRadius: 30,
      margin: 5, 
      flexDirection: 'row',
@@ -110,7 +110,7 @@ const TabItem = ({ screenName, IconComponent, label, onPress, isActive }) => (
      justifyContent: 'center',
      alignItems: 'center',
      width: Dimensions.get('window').width - 70,
-     height: 50,
+     height: 80,
      borderRadius: 30,
      margin: 5, 
      flexDirection: 'row',
@@ -125,7 +125,7 @@ const TabItem = ({ screenName, IconComponent, label, onPress, isActive }) => (
      marginHorizontal: 17
    },
    vector: {
-    width: '40'
+    width: '50'
    },
    btnlabel: {
     color: '#E3E3E3',

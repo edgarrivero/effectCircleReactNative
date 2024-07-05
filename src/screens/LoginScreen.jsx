@@ -25,16 +25,32 @@ import Google from '../assets/icon/google.svg';
 
 function LoginScreen({ navigation }) {
     const {authorize, clearSession, user, getCredentials, error, isLoading} = useAuth0();
+    const loggedIn = user !== undefined && user !== null;
  
     const onLogin = async () => {
-      await authorize({}, {});
-      const credentials = await getCredentials();
+        try {
+            await authorize();
+
+            if(loggedIn){
+              const credentials = await getCredentials();
+              console.log(user);
+              console.log(credentials);
+              navigation.navigate('Home', { credentials: credentials?.accessToken, user: user?.name, picture: user?.picture });
+            }else{
+              console.log("no ha iniciado sesion")
+            }
+            
+            console.log(user);
+        } catch (e) {
+            console.log(e);
+        }
+      //await authorize({}, {});
+      
       //Alert.alert('AccessToken: ' + credentials?.accessToken);
-      console.log(user);
-      navigation.navigate('Home', { credentials: credentials?.accessToken, user: user?.name });
+      
+      //navigation.navigate('Home', { credentials: credentials?.accessToken, user: user?.name, picture:  user?.picture });
     };
  
-    const loggedIn = user !== undefined && user !== null;
      const onLogout = async () => {
        await clearSession({}, {});
      };
@@ -44,20 +60,11 @@ function LoginScreen({ navigation }) {
     }
 
     useEffect(() => {
-      const delay = 1000; 
+      const delay = 2000; 
   
       const timeoutId = setTimeout(async () => {
         const credentials = await getCredentials();
-        if(loggedIn){
-          //console.log(user);
-          navigation.navigate('Home', { credentials: credentials?.accessToken, user: user?.name, picture: user?.picture });
-        }else{
-          console.log("no ha iniciado sesion")
-        }
-        
-        // Código que se ejecuta después de un tiempo prudente
-        
-        console.log('El componente se ha montado y ha pasado un tiempo prudente');
+        onLogin()
       }, delay);
   
       return () => {
@@ -162,18 +169,18 @@ function LoginScreen({ navigation }) {
     justifyContent: 'flex-end',
   },
   button: {
-    backgroundColor: '#E6E6E6',
-    paddingVertical: 10,
-    paddingHorizontal: 40,
-    borderRadius: 25,
+    backgroundColor: '#FF8E00',
+    paddingVertical: 15,
+    paddingHorizontal: 60,
+    borderRadius: 55,
     marginTop: 370,
     shadowOpacity: 0.5,
     shadowRadius: 10,
     elevation: 5
   },
   buttonText: {
-    color: 'gray',
-    fontSize: 20,
+    color: 'white',
+    fontSize: 30,
     fontWeight: 'bold',
   },
 });
